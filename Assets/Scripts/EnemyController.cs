@@ -10,9 +10,21 @@ public class EnemyController : Character
     public DiceRollingSystem DiceRollingSystemScript;
     // Check if the enemy is alive  
     public override bool isAlive => health > 0;
+
+    public MonoBehaviour enemyScript; // Random script assigned in inspector
+    private IEnemyActions enemy;
+
     void Start()
     {
         DiceRollingSystemScript = GameObject.FindGameObjectWithTag("DiceRollingSystem").GetComponent<DiceRollingSystem>();
+        if (enemyScript is IEnemyActions validEnemy)
+        {
+            enemy = validEnemy;
+        }
+        else
+        {
+            Debug.LogError("Assigned script does not implement the IEnemy interface.");
+        }
     }
 
     // Awake is called when the script instance is being loaded
@@ -101,18 +113,14 @@ public class EnemyController : Character
     // Enemy basic attack method (called when the enemy attacks the player)
     public void BasicAttack(PlayerController player, CombatManager combatManager)
     {
-
         animator.SetTrigger("Attack"); // Play the "Attack" animation
-        int toHitRoll = DiceRollingSystemScript.ROLLD20(); // Roll a d20 to determine if the attack hits
-        if (toHitRoll >= player.armorClass)
+        if (enemy != null)
         {
-            int damage = DiceRollingSystemScript.ROLLD10(); // Deal damage between 1 and 10
-            player.TakeDamage(damage); // Call the player's TakeDamage method
-            combatManager.UpdateFeedback($"Enemy attacks for {damage} damage!");
+            enemy.PerformAttack(player, combatManager);
         }
         else
         {
-            combatManager.UpdateFeedback("Enemy's attack missed!");
+            Debug.LogError("No valid enemy script assigned.");
         }
     }
 

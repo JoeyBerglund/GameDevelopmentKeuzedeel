@@ -36244,7 +36244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1923163849}
   enemyPrefabs:
-  - {fileID: 2975282703855057069, guid: c91c3e9ac5419254b84ae48fce6ce510, type: 3}
+  - {fileID: 6436630539043812388, guid: c91c3e9ac5419254b84ae48fce6ce510, type: 3}
+  - {fileID: -8604928683609175449, guid: e067a1df356d3e84bb3f15113b018f67, type: 3}
   healthBarPrefab: {fileID: 1107742149987981929, guid: 2dd1ba19f5c5b9f4ea96edad11ea4428, type: 3}
   healthBarCanvas: {fileID: 1927447193}
   activeEnemies: []

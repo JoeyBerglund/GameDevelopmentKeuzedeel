@@ -6,19 +6,12 @@ public class DiceRollingSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // You can call methods here for testing
-        // Test various methods
-        // Debug.Log("Roll D100: " + ROLLD100());
-        // Debug.Log("Roll D4 (x3): " + ROLLD4(3));
-        // Debug.Log("Roll Initiative: " + ROLLINITIATIVE());
-        // Debug.Log("Roll Initiative with Advantage: " + ROLLINITIATIVEADVANTAGE());
-        // Debug.Log("Roll Initiative with Disadvantage: " + ROLLINITIATIVEDISADVANTAGE());
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(ROLLD4());
 
     }
     public int ROLLINITIATIVE()
