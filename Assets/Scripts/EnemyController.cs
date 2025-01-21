@@ -7,10 +7,13 @@ public class EnemyController : Character
     private Image healthBarImage; // Reference to the health bar's fill image
     private Canvas healthBarCanvas; // Reference to the health bar canvas
     private Animator animator; // Reference to the Animator component
-
-    // Check if the enemy is alive
+    public DiceRollingSystem DiceRollingSystemScript;
+    // Check if the enemy is alive  
     public override bool isAlive => health > 0;
-
+    void Start()
+    {
+        DiceRollingSystemScript = GameObject.FindGameObjectWithTag("DiceRollingSystem").GetComponent<DiceRollingSystem>();
+    }
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -100,10 +103,10 @@ public class EnemyController : Character
     {
 
         animator.SetTrigger("Attack"); // Play the "Attack" animation
-        int toHitRoll = Random.Range(1, 21); // Roll a d20 to determine if the attack hits
+        int toHitRoll = DiceRollingSystemScript.ROLLD20(); // Roll a d20 to determine if the attack hits
         if (toHitRoll >= player.armorClass)
         {
-            int damage = Random.Range(1, 11); // Deal damage between 1 and 10
+            int damage = DiceRollingSystemScript.ROLLD10(); // Deal damage between 1 and 10
             player.TakeDamage(damage); // Call the player's TakeDamage method
             combatManager.UpdateFeedback($"Enemy attacks for {damage} damage!");
         }
@@ -114,5 +117,5 @@ public class EnemyController : Character
     }
 
     // Roll initiative for the enemy, returning a value between 1 and 20
-    public int RollInitiative() => Random.Range(1, 21);
+    public int RollInitiative() => DiceRollingSystemScript.ROLLINITIATIVE();
 }
