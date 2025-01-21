@@ -12,12 +12,12 @@ public class EnemyController : Character
     public override bool isAlive => health > 0;
 
     public MonoBehaviour enemyScript; // Random script assigned in inspector
-    private IEnemyActions enemy;
+    private enemiesAi enemy;
 
     void Start()
     {
         DiceRollingSystemScript = GameObject.FindGameObjectWithTag("DiceRollingSystem").GetComponent<DiceRollingSystem>();
-        if (enemyScript is IEnemyActions validEnemy)
+        if (enemyScript is enemiesAi validEnemy)
         {
             enemy = validEnemy;
         }

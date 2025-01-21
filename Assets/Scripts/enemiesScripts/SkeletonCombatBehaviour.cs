@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SkeletonCombatBehaviour : MonoBehaviour, IEnemyActions
+public class SkeletonCombatBehaviour : MonoBehaviour, enemiesAi
 {
     public DiceRollingSystem DiceRollingSystemScript;
     

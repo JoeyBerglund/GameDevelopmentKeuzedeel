@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IEnemyActions
+public interface enemiesAi
 {
     void PerformAttack(PlayerController player, CombatManager combatManager);
 }

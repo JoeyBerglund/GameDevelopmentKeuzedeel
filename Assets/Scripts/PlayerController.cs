@@ -9,14 +9,14 @@ public class PlayerController : Character
     public override void TakeDamage(int damage) => health = Mathf.Max(health - damage, 0);
 
     public override void GainEnergy(int amount) => energy = Mathf.Min(energy + amount, maxEnergy);
-  public DiceRollingSystem DiceRollingSystemScript;
+    public DiceRollingSystem DiceRollingSystemScript;
     // Check if the enemy is alive  
 
     void Start()
     {
         DiceRollingSystemScript = GameObject.FindGameObjectWithTag("DiceRollingSystem").GetComponent<DiceRollingSystem>();
     }
-    
+
     public int BasicAttack(EnemyController enemy, CombatManager combatManager)
     {
         int toHitRoll = RollToHit();
@@ -61,9 +61,9 @@ public class PlayerController : Character
         else combatManager.UpdateFeedback("Not enough energy for ultimate attack!");
     }
 
-    private int RollToHit() => DiceRollingSystemScript.ROLLD20() + hitbonus;
+    private int RollToHit() => DiceRollingSystemScript.ROLLD20(1, "player") + hitbonus;
 
-    private int RollDamage(bool isCrit) => DiceRollingSystemScript.ROLLD12() + (isCrit ? DiceRollingSystemScript.ROLLD12() : 0);
+    private int RollDamage(bool isCrit) => DiceRollingSystemScript.ROLLD12(1) + (isCrit ? DiceRollingSystemScript.ROLLD12(1) : 0);
 
-    public int RollInitiative() => DiceRollingSystemScript.ROLLINITIATIVE();
+    public int RollInitiative() => DiceRollingSystemScript.ROLLINITIATIVE("player");
 }
