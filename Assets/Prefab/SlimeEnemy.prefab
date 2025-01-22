@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: -5764379202521596551}
   - component: {fileID: -6826859453141998223}
   m_Layer: 0
-  m_Name: GhostEnemy
+  m_Name: SlimeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 1000010538092382}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682b4a37037a67c4bbf8016d085696bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: 
   health: 100
   maxHealth: 100
   attackPower: 10

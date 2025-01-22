@@ -44,7 +44,7 @@ public class CombatManager : MonoBehaviour
         {
             EnemyController randomEnemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
             Quaternion rotation = Quaternion.Euler(0, 90, 0);
-
+            
             // Instantiate the enemy
             EnemyController enemyInstance = Instantiate(randomEnemyPrefab, spawnPosition, rotation);
             activeEnemies.Add(enemyInstance);

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class EnemyController : Character
 {
+    public string enemyName;
     public int health = 100, maxHealth = 100, attackPower = 10, armorClass = 12;
     private Image healthBarImage; // Reference to the health bar's fill image
     private Canvas healthBarCanvas; // Reference to the health bar canvas
@@ -20,6 +21,11 @@ public class EnemyController : Character
         if (enemyScript is enemiesAi validEnemy)
         {
             enemy = validEnemy;
+            enemyName = enemy.enemyName;
+            health = enemy.health;
+            maxHealth = enemy.maxHealth;
+            attackPower = enemy.attackPower;
+            armorClass = enemy.armorClass;
         }
         else
         {
@@ -114,6 +120,7 @@ public class EnemyController : Character
     public void BasicAttack(PlayerController player, CombatManager combatManager)
     {
         animator.SetTrigger("Attack"); // Play the "Attack" animation
+        Debug.Log($"enemyName {enemyName} health {health} maxHealth {maxHealth} attackPower {attackPower} armorClass {armorClass}");
         if (enemy != null)
         {
             enemy.PerformAttack(player, combatManager);
@@ -126,4 +133,5 @@ public class EnemyController : Character
 
     // Roll initiative for the enemy, returning a value between 1 and 20
     public int RollInitiative() => DiceRollingSystemScript.ROLLINITIATIVE();
+   
 }
